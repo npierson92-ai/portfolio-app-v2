@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { STOCKS } from '../data/stocks.js';
 
-const PROXY = import.meta.env.VITE_PROXY_URL || 'http://localhost:3001';
+const PROXY = 'https://portfolio-app-production-ee72.up.railway.app';
 const TICKERS = STOCKS.map(s => s.ticker).filter(t => t !== 'VOO/SPY').concat(['VOO']);
 
 export function usePrices(updatePrice) {

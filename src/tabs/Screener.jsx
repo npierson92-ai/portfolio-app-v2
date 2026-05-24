@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const PROXY = import.meta.env.VITE_PROXY_URL || 'http://localhost:3001';
+const PROXY = 'https://portfolio-app-production-ee72.up.railway.app';
 const STORAGE_KEY = 'portfolio_v2_screener';
 
 const SECTORS = [

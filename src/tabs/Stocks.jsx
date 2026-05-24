@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { STOCKS, RISK_LABEL, RISK_COLOR, fmt } from '../data/stocks.js';
 
-const PROXY = import.meta.env.VITE_PROXY_URL || 'http://localhost:3001';
+const PROXY = 'https://portfolio-app-production-ee72.up.railway.app';
 
 async function fetchNews(ticker, name) {
   const res = await fetch(`${PROXY}/api/news`, {
