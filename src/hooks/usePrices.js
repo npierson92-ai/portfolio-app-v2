@@ -14,7 +14,10 @@ export function usePrices(updatePrice) {
     setLoading(true);
     setError(null);
     try {
-      const res  = await fetch(`${PROXY}/api/prices?tickers=${TICKERS.join(',')}`);
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 10000);
+      const res = await fetch(`${PROXY}/api/prices?tickers=${TICKERS.join(',')}`, { signal: controller.signal });
+      clearTimeout(timeout);
       const data = await res.json();
       if (data.prices) {
         setPrices(data.prices);
@@ -24,25 +27,15 @@ export function usePrices(updatePrice) {
         });
       }
     } catch (e) {
-      setError('Price fetch failed — check proxy connection');
+      setError('Price fetch failed');
     } finally {
       setLoading(false);
     }
   }, [updatePrice]);
 
-  // Auto-refresh every 5 minutes during market hours
   useEffect(() => {
-    fetchPrices();
-    const interval = setInterval(() => {
-      const now  = new Date();
-      const hour = now.getUTCHours();
-      const day  = now.getUTCDay();
-      // Market hours: Mon-Fri 13:30-20:00 UTC (9:30am-4pm ET)
-      if (day >= 1 && day <= 5 && hour >= 13 && hour < 20) {
-        fetchPrices();
-      }
-    }, 5 * 60 * 1000);
-    return () => clearInterval(interval);
+    const timer = setTimeout(() => fetchPrices(), 1000);
+    return () => clearTimeout(timer);
   }, [fetchPrices]);
 
   return { prices, loading, lastFetch, error, fetchPrices };
