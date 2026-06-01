@@ -33,8 +33,12 @@ export default function App() {
   const alertCount = trimAlerts.length;
 
   const handleAddLot = () => {
-    if (!addModal || !addForm.shares || !addForm.cost) return;
-    addLot(addModal.ticker, +addForm.shares, +addForm.cost, new Date(addForm.date).toISOString());
+    if (!addModal) return;
+    const sh = parseFloat(addForm.shares) || 0;
+    const co = parseFloat(addForm.cost) || 0;
+    const dt = addForm.date || new Date().toISOString().slice(0,10);
+    if (!sh || !co) { alert('Enter shares and cost per share'); return; }
+    addLot(addModal.ticker, sh, co, new Date(dt).toISOString());
     setAddModal(null);
     setAddForm({ shares: '', cost: '', date: new Date().toISOString().slice(0, 10) });
   };
