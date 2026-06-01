@@ -117,52 +117,48 @@ export default function App() {
 
       {/* Add lot modal */}
       {addModal && (
-        <div style={{ position: 'fixed', inset: 0, background: '#000000cc', zIndex: 200, display: 'flex', alignItems: 'flex-end' }}>
-          <div style={{ background: 'var(--bg2)', borderRadius: '16px 16px 0 0', padding: '24px 20px 40px', width: '100%', maxHeight: '85vh', overflowY: 'auto', WebkitOverflowScrolling: 'touch' }}>
-            <div style={{ fontSize: 9, color: 'var(--text3)', letterSpacing: '0.12em', marginBottom: 4 }}>LOG PURCHASE</div>
-            <div style={{ fontSize: 28, fontFamily: 'var(--display)', color: '#fff', marginBottom: 16 }}>ADD LOT</div>
-
-            {/* Ticker selector */}
-            <div style={{ marginBottom: 12 }}>
-              <div style={{ fontSize: 8, color: 'var(--text3)', letterSpacing: '0.1em', marginBottom: 6 }}>STOCK</div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
-                {STOCKS.map(s => (
-                  <button key={s.ticker} onClick={() => setAddModal({ ticker: s.ticker })}
-                    style={{ fontSize: 9, padding: '4px 8px', borderRadius: 4, cursor: 'pointer', fontFamily: 'var(--mono)',
-                      border: `1px solid ${addModal.ticker === s.ticker ? s.color : 'var(--border)'}`,
-                      background: addModal.ticker === s.ticker ? `${s.color}15` : 'transparent',
-                      color: addModal.ticker === s.ticker ? s.color : 'var(--text3)',
-                    }}>
-                    {s.ticker}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {[
-              { label: 'SHARES',      key: 'shares', type: 'number', placeholder: '10.5' },
-              { label: 'COST/SHARE',  key: 'cost',   type: 'number', placeholder: '450.00' },
-              { label: 'PURCHASE DATE', key: 'date', type: 'date',   placeholder: '' },
-            ].map(f => (
-              <div key={f.key} style={{ marginBottom: 12 }}>
-                <div style={{ fontSize: 8, color: 'var(--text3)', letterSpacing: '0.1em', marginBottom: 5 }}>{f.label}</div>
-                <input type={f.type} value={addForm[f.key]} onChange={e => setAddForm(p => ({ ...p, [f.key]: e.target.value }))} placeholder={f.placeholder} />
-              </div>
-            ))}
-
-            {addForm.shares && addForm.cost && (
-              <div style={{ padding: '8px 12px', background: 'var(--bg3)', borderRadius: 6, marginBottom: 14, fontSize: 10, color: 'var(--cyan)' }}>
-                Total: {fmt(+addForm.shares * +addForm.cost)}
-              </div>
-            )}
-
-            <div style={{ display: 'flex', gap: 8 }}>
-              <button onClick={() => setAddModal(null)} style={{ flex: 1, padding: 12, background: 'transparent', border: '1px solid var(--border2)', borderRadius: 8, color: 'var(--text3)', fontSize: 10, fontFamily: 'var(--mono)', cursor: 'pointer' }}>CANCEL</button>
-              <button onClick={handleAddLot} style={{ flex: 2, padding: 12, background: 'var(--cyan)', border: 'none', borderRadius: 8, color: 'var(--bg)', fontSize: 11, letterSpacing: '0.1em', fontFamily: 'var(--mono)', fontWeight: 500, cursor: 'pointer' }}>ADD LOT</button>
-            </div>
-          </div>
+  <div style={{ position: 'fixed', inset: 0, background: '#000000cc', zIndex: 200 }} onClick={() => setAddModal(null)}>
+    <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'var(--bg2)', borderRadius: '16px 16px 0 0', padding: '20px 20px 0' }} onClick={e => e.stopPropagation()}>
+      <div style={{ fontSize: 9, color: 'var(--text3)', letterSpacing: '0.12em', marginBottom: 4 }}>LOG PURCHASE</div>
+      <div style={{ fontSize: 28, fontFamily: 'var(--display)', color: '#fff', marginBottom: 12 }}>ADD LOT</div>
+      <div style={{ marginBottom: 10 }}>
+        <div style={{ fontSize: 8, color: 'var(--text3)', letterSpacing: '0.1em', marginBottom: 6 }}>STOCK</div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
+          {STOCKS.map(s => (
+            <button key={s.ticker} onClick={() => setAddModal({ ticker: s.ticker })}
+              style={{ fontSize: 9, padding: '4px 8px', borderRadius: 4, cursor: 'pointer', fontFamily: 'var(--mono)',
+                border: `1px solid ${addModal.ticker === s.ticker ? s.color : 'var(--border)'}`,
+                background: addModal.ticker === s.ticker ? `${s.color}15` : 'transparent',
+                color: addModal.ticker === s.ticker ? s.color : 'var(--text3)',
+                touchAction: 'manipulation',
+              }}>
+              {s.ticker}
+            </button>
+          ))}
+        </div>
+      </div>
+      {[
+        { label: 'SHARES', key: 'shares', type: 'number', placeholder: '10.5' },
+        { label: 'COST/SHARE', key: 'cost', type: 'number', placeholder: '450.00' },
+        { label: 'PURCHASE DATE', key: 'date', type: 'date', placeholder: '' },
+      ].map(f => (
+        <div key={f.key} style={{ marginBottom: 10 }}>
+          <div style={{ fontSize: 8, color: 'var(--text3)', letterSpacing: '0.1em', marginBottom: 4 }}>{f.label}</div>
+          <input type={f.type} value={addForm[f.key]} onChange={e => setAddForm(p => ({ ...p, [f.key]: e.target.value }))} placeholder={f.placeholder} />
+        </div>
+      ))}
+      {addForm.shares && addForm.cost && (
+        <div style={{ padding: '6px 10px', background: 'var(--bg3)', borderRadius: 6, marginBottom: 10, fontSize: 10, color: 'var(--cyan)' }}>
+          Total: {fmt(+addForm.shares * +addForm.cost)}
         </div>
       )}
+      <div style={{ display: 'flex', gap: 8, paddingBottom: 'calc(env(safe-area-inset-bottom) + 20px)', paddingTop: 8 }}>
+        <button onClick={() => setAddModal(null)} style={{ flex: 1, padding: 14, background: 'transparent', border: '1px solid var(--border2)', borderRadius: 8, color: 'var(--text3)', fontSize: 11, fontFamily: 'var(--mono)', cursor: 'pointer', touchAction: 'manipulation' }}>CANCEL</button>
+        <button onClick={handleAddLot} style={{ flex: 2, padding: 14, background: 'var(--cyan)', border: 'none', borderRadius: 8, color: 'var(--bg)', fontSize: 12, letterSpacing: '0.1em', fontFamily: 'var(--mono)', fontWeight: 500, cursor: 'pointer', touchAction: 'manipulation' }}>ADD LOT</button>
+      </div>
+    </div>
+  </div>
+)}
     </div>
   );
 }
