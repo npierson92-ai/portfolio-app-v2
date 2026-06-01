@@ -34,11 +34,12 @@ export default function App() {
 
   const handleAddLot = () => {
     if (!addModal) return;
-    const sh = parseFloat(addForm.shares) || 0;
-    const co = parseFloat(addForm.cost) || 0;
+    const invested = parseFloat(addForm.shares) || 0;
+    const price = parseFloat(addForm.cost) || 0;
     const dt = addForm.date || new Date().toISOString().slice(0,10);
-    if (!sh || !co) { alert('Enter shares and cost per share'); return; }
-    addLot(addModal.ticker, sh, co, new Date(dt).toISOString());
+    if (!invested || !price) { alert('Enter amount invested and price per share'); return; }
+    const sharesAcquired = invested / price;
+    addLot(addModal.ticker, sharesAcquired, price, new Date(dt).toISOString());
     setAddModal(null);
     setAddForm({ shares: '', cost: '', date: new Date().toISOString().slice(0, 10) });
   };
@@ -142,8 +143,8 @@ export default function App() {
         </div>
       </div>
       {[
-        { label: 'SHARES', key: 'shares', type: 'number', placeholder: '10.5' },
-        { label: 'COST/SHARE', key: 'cost', type: 'number', placeholder: '450.00' },
+        { label: 'AMOUNT INVESTED ($)', key: 'shares', type: 'number', placeholder: '410.00' },
+        { label: 'PRICE PER SHARE ($)', key: 'cost', type: 'number', placeholder: '697.50' },
         { label: 'PURCHASE DATE', key: 'date', type: 'date', placeholder: '' },
       ].map(f => (
         <div key={f.key} style={{ marginBottom: 10 }}>
@@ -153,7 +154,7 @@ export default function App() {
       ))}
       {addForm.shares && addForm.cost && (
         <div style={{ padding: '6px 10px', background: 'var(--bg3)', borderRadius: 6, marginBottom: 10, fontSize: 10, color: 'var(--cyan)' }}>
-          Total: {fmt(+addForm.shares * +addForm.cost)}
+          Shares acquired: {(+addForm.shares / +addForm.cost).toFixed(4)}
         </div>
       )}
       <div style={{ display: 'flex', gap: 8, paddingBottom: 'calc(env(safe-area-inset-bottom) + 20px)', paddingTop: 8 }}>
