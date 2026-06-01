@@ -118,7 +118,7 @@ export default function App() {
       {/* Add lot modal */}
       {addModal && (
         <div style={{ position: 'fixed', inset: 0, background: '#000000cc', zIndex: 200, display: 'flex', alignItems: 'flex-end' }}>
-          <div style={{ background: 'var(--bg2)', borderRadius: '16px 16px 0 0', padding: '24px 20px', width: '100%' }}>
+          <div style={{ background: 'var(--bg2)', borderRadius: '16px 16px 0 0', padding: '24px 20px 40px', width: '100%', maxHeight: '85vh', overflowY: 'auto', WebkitOverflowScrolling: 'touch' }}>
             <div style={{ fontSize: 9, color: 'var(--text3)', letterSpacing: '0.12em', marginBottom: 4 }}>LOG PURCHASE</div>
             <div style={{ fontSize: 28, fontFamily: 'var(--display)', color: '#fff', marginBottom: 16 }}>ADD LOT</div>
 
