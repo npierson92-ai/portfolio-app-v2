@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
-      registerType: 'autoUpdate',
+      registerType: 'autoUpdate', version: '2.1',
       includeAssets: ['icon-192.png', 'icon-512.png'],
       manifest: {
         name: 'Portfolio Tracker',
