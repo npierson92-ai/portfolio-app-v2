@@ -1,9 +1,5 @@
 {
-  "experimentalServices": {
-    "web": {
-      "routePrefix": "/",
-      "framework": "vite",
-      "buildCommand": "cd server && npm install"
-    }
-  }
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite"
 }
