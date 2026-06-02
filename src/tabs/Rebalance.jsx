@@ -1,15 +1,17 @@
+import { supabase } from '../lib/supabase.js';
 import { useState } from 'react';
 import { STOCKS, RISK_LABEL, RISK_COLOR, TRIM_RULES, fmt } from '../data/stocks.js';
 
-const STORAGE_KEY = 'portfolio_v2_trimlog';
-
-function loadTrimLog() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); }
-  catch { return []; }
-}
+// Trim log now stored in Supabase
 
 export default function Rebalance({ positionsWithStats, totalValue, addLot, recordTrim, sendNotification }) {
-  const [trimLog,   setTrimLog]   = useState(loadTrimLog);
+  const [trimLog, setTrimLog] = useState([]);
+  useEffect(() => { loadTrimLogDB(); }, []);
+
+  const loadTrimLogDB = async () => {
+    const { data } = await supabase.from('trim_log').select('*').order('date', { ascending: false });
+    if (data) setTrimLog(data);
+  };
   const [logModal,  setLogModal]  = useState(null);
   const [logForm,   setLogForm]   = useState({ shares: '', price: '', notes: '' });
   const [tab,       setTab]       = useState('drift');
