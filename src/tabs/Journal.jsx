@@ -91,10 +91,7 @@ export default function Journal() {
         <div style={{ fontSize: 8, color: 'var(--text3)', letterSpacing: '0.12em', marginBottom: 8 }}>WEEKLY NOTES</div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5, marginBottom: 8 }}>
           {PROMPTS.map((p, i) => (
-            <button key={i} onClick={() => setForm(f => ({ ...f, notes: f.notes + (f.notes ? '
-
-' : '') + p + '
-' }))}
+            <button key={i} onClick={() => setForm(f => ({ ...f, notes: f.notes + (f.notes ? '\n\n' : '') + p + '\n' }))}
               style={{ fontSize: 8, color: 'var(--text3)', background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: 4, padding: '3px 7px', cursor: 'pointer', fontFamily: 'var(--mono)', touchAction: 'manipulation' }}>
               + {p.slice(0,28)}...
             </button>
