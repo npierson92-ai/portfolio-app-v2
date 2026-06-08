@@ -1,10 +1,10 @@
 // ── Portfolio stocks ──────────────────────────────────────────────
-// 10 positions: 41% index + 59% active
+// 11 positions: 41% index + 59% active
 // 5-year horizon · $250k target · $10k start · $1k/week
 
 export const STOCKS = [
   {
-    ticker: 'VOO',  name: 'S&P 500 Index',   color: '#00e5ff', annualReturn: 0.10,  risk: 1, pct: 41,
+    ticker: 'VOO',  name: 'S&P 500 Index',   color: '#00e5ff', annualReturn: 0.10,  risk: 1, pct: 37,
     sector: 'Index',
     why: 'Core floor. Owns GOOGL, AMZN, NVDA at market weight. Can\'t catastrophically underperform.',
     rationale: '53% — reduced from 60% to make room for TSLA and WMT active positions.',
@@ -98,6 +98,13 @@ The logistics network — built from scratch because Latin American infrastructu
 At a PEG ratio of 1.16 and P/E of 40x — below its 3-year average of 65x — you are buying this at a genuine valuation discount to its own history while the underlying growth is accelerating.
 
 Key risks: currency volatility in Brazil and Argentina, Amazon Latin America investment, emerging market macro sensitivity. Sized at 5% to capture the long runway while acknowledging EM risk.`,
+  },
+  {
+    ticker: 'MU',    name: 'Micron Technology', color: '#4fc3f7', annualReturn: 0.18,  risk: 3, pct: 3,
+    sector: 'AI Memory',
+    why: 'Only US HBM supplier. Every NVDA GPU needs Micron memory. $100B HBM by 2028.',
+    rationale: '3% satellite — AI memory layer beneath NVDA. Cyclical risk keeps it small.',
+    thesis: 'Micron is the picks-and-shovels play directly beneath NVDA. Every H100 and Blackwell GPU requires High Bandwidth Memory — Micron is one of only three companies globally that makes it and the only US-based manufacturer. HBM sold out for all of 2026. Q2 FY2026 revenue hit $23.86B record. Full-year consensus $76B — nearly double FY2025. Forward P/E below 8x for 57% YoY growth. June 24 Q3 earnings is the next catalyst. $100B HBM market by 2028 at 40% CAGR. Key risk: memory is historically cyclical — oversupply can collapse margins fast.',
   },
   {
     ticker: 'TSLA',  name: 'Tesla',          color: '#cc0000', annualReturn: 0.15,  risk: 4, pct: 3,
