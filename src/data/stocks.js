@@ -4,7 +4,7 @@
 
 export const STOCKS = [
   {
-    ticker: 'VOO',  name: 'S&P 500 Index',   color: '#00e5ff', annualReturn: 0.10,  risk: 1, pct: 37,
+    ticker: 'VOO',  name: 'S&P 500 Index',   color: '#00e5ff', annualReturn: 0.10,  risk: 1, pct: 35,
     sector: 'Index',
     why: 'Core floor. Owns GOOGL, AMZN, NVDA at market weight. Can\'t catastrophically underperform.',
     rationale: '53% — reduced from 60% to make room for TSLA and WMT active positions.',
@@ -15,7 +15,7 @@ The S&P 500 has returned ~10% annually over every rolling 20-year period in hist
 Note that VOO already owns NVDA (~6%), MSFT (~7%), META (~2.4%), TSLA (~1.8%) and WMT (~0.8%) at index weights, so your effective exposure to your active picks is higher than the stated percentages.`,
   },
   {
-    ticker: 'NVDA',  name: 'NVIDIA',         color: '#ff6b35', annualReturn: 0.13,  risk: 3, pct: 12,
+    ticker: 'NVDA',  name: 'NVIDIA',         color: '#ff6b35', annualReturn: 0.13,  risk: 3, pct: 13,
     sector: 'AI Core',
     why: 'Undisputed AI chip leader. CUDA moat. Blackwell cycle early innings.',
     rationale: '14% — highest single active allocation. Conviction + moat depth justify max weight.',
@@ -39,7 +39,7 @@ The Azure relationship with OpenAI gives Microsoft first-mover advantage in ente
 At Risk 2, MSFT is the portfolio's most reliable active compounder. It's the name you hold through a tech correction and add to, not the one that panic-sells you out of conviction.`,
   },
   {
-    ticker: 'META',  name: 'Meta',           color: '#0099bb', annualReturn: 0.125, risk: 3, pct: 6,
+    ticker: 'META',  name: 'Meta',           color: '#0099bb', annualReturn: 0.125, risk: 3, pct: 7,
     sector: 'AI Core',
     why: 'Ad monopoly with AI dividend. Margin expansion accelerating.',
     rationale: '7% — strong return capped below MSFT due to advertiser dependency.',
@@ -50,7 +50,7 @@ Llama open-source models are a strategic masterstroke — by commoditizing found
 Key risks: EU regulatory action, advertiser concentration, young user demographic erosion to TikTok.`,
   },
   {
-    ticker: 'CRWD',  name: 'CrowdStrike',    color: '#e8001c', annualReturn: 0.13,  risk: 3, pct: 8,
+    ticker: 'CRWD',  name: 'CrowdStrike',    color: '#e8001c', annualReturn: 0.13,  risk: 3, pct: 9,
     sector: 'Security',
     why: 'Non-discretionary cybersecurity. Falcon platform deeply sticky ARR.',
     rationale: '8% — best non-AI conviction name. Mission-critical demand doesn\'t disappear in downturns.',
@@ -72,7 +72,7 @@ The AI opportunity is significant: Draft One uses AI to automatically write poli
 International expansion — UK, Australia, Europe — represents a multi-year growth runway at earlier stages than the US deployment cycle.`,
   },
   {
-    ticker: 'APLD',  name: 'Applied Digital', color: '#ff9100', annualReturn: 0.18,  risk: 5, pct: 6,
+    ticker: 'APLD',  name: 'Applied Digital', color: '#ff9100', annualReturn: 0.18,  risk: 5, pct: 10,
     sector: 'AI Infra',
     why: '$11B CoreWeave backlog. Highest upside. Pre-profit risk sized at 7%.',
     rationale: '7% — if you have conviction, size it properly. Hard cap given Risk 5.',
@@ -82,41 +82,16 @@ APLD doesn't need to pick the winning AI model or chip. It just needs to provide
 
 The bear case is real: pre-profitability means the stock is valued on future cash flows with high execution risk. CoreWeave concentration means a single contract renegotiation changes the thesis. Capital-intensive construction projects run over budget.`,
   },
+
+
   {
-    ticker: 'MELI',  name: 'MercadoLibre',   color: '#ffe600', annualReturn: 0.14,  risk: 3, pct: 5,
-    sector: 'E-Commerce',
-    why: 'Latin America e-commerce dominant. 85% of retail still offline. Less than 5% market share.',
-    rationale: '5% — clearest geographic growth runway available. LatAm e-commerce penetration is a decade behind US.',
-    thesis: `MercadoLibre is the dominant e-commerce and fintech platform across Latin America — the Amazon and PayPal of a region with 650 million people and e-commerce penetration roughly half the level of the US. Physical stores still represent 85% of retail spend in Latin America, and MELI holds less than 5% of total retail market share. That gap is the entire thesis.
-
-Unique buyers in Brazil grew 29% year over year in Q3 2025 — the fastest pace since the pandemic peak and the largest quarterly buyer addition ever. FX-neutral GMV grew 30% in Brazil, 23% in Mexico, and 126% in Argentina in Q1 2025.
-
-Mercado Pago, the fintech arm, is becoming the primary banking relationship for hundreds of millions of Latin Americans who are unbanked or underbanked. It is PayPal, Venmo, and a bank account combined — in markets where traditional banking never reached most people. This is a completely separate multi-billion dollar business compounding inside the same platform.
-
-The logistics network — built from scratch because Latin American infrastructure required it — now handles 95% of MELI's shipments internally. This is a 25-year moat that Amazon, Shein, and Temu cannot replicate with a checkbook.
-
-At a PEG ratio of 1.16 and P/E of 40x — below its 3-year average of 65x — you are buying this at a genuine valuation discount to its own history while the underlying growth is accelerating.
-
-Key risks: currency volatility in Brazil and Argentina, Amazon Latin America investment, emerging market macro sensitivity. Sized at 5% to capture the long runway while acknowledging EM risk.`,
+    ticker: 'AVGO',  name: 'Broadcom',         color: '#cc0066', annualReturn: 0.20,  risk: 2, pct: 7,
+    sector: 'AI Chips + Software',
+    why: 'Custom AI chips for Google, Meta, OpenAI. AI revenue +143% YoY. VMware recurring software on top.',
+    rationale: '3% — Risk 2 with 20% return. Best-of-breed custom AI silicon plus VMware software recurring revenue.',
+    thesis: 'Broadcom is the picks-and-shovels play for hyperscaler AI at the chip design layer. Unlike NVDA which sells general-purpose GPUs, Broadcom designs custom AI accelerators specifically optimized for each hyperscaler — Google TPUs, Meta AI chips, and now Anthropic and OpenAI. Custom silicon can outperform general GPUs for specific workloads at lower cost, which is why Google, Meta, and others are paying Broadcom to build chips they own. AI revenue grew 143% year over year in Q2 FY2026 with management guiding for over $100 billion in AI revenue in fiscal 2027. The VMware acquisition adds a massive recurring software revenue stream — enterprise infrastructure software that Fortune 500 companies cannot easily rip out. Combined: AI chip hypergrowth plus sticky enterprise software equals exceptional margin durability. Dropped 17% after earnings because guidance was not raised above $100B — the business grew 143% and the stock went on sale. JPMorgan called it a buy-the-dip opportunity. Current price ~$393 vs $523 analyst consensus target — 33% upside. Risk 2 because it is profitable, cash generative, and has real customer contracts. Not speculative.',
   },
-  {
-    ticker: 'MU',    name: 'Micron Technology', color: '#4fc3f7', annualReturn: 0.18,  risk: 3, pct: 3,
-    sector: 'AI Memory',
-    why: 'Only US HBM supplier. Every NVDA GPU needs Micron memory. $100B HBM by 2028.',
-    rationale: '3% satellite — AI memory layer beneath NVDA. Cyclical risk keeps it small.',
-    thesis: 'Micron is the picks-and-shovels play directly beneath NVDA. Every H100 and Blackwell GPU requires High Bandwidth Memory — Micron is one of only three companies globally that makes it and the only US-based manufacturer. HBM sold out for all of 2026. Q2 FY2026 revenue hit $23.86B record. Full-year consensus $76B — nearly double FY2025. Forward P/E below 8x for 57% YoY growth. June 24 Q3 earnings is the next catalyst. $100B HBM market by 2028 at 40% CAGR. Key risk: memory is historically cyclical — oversupply can collapse margins fast.',
-  },
-  {
-    ticker: 'TSLA',  name: 'Tesla',          color: '#cc0000', annualReturn: 0.15,  risk: 4, pct: 3,
-    sector: 'Autonomy/Energy',
-    why: 'Robotaxi catalyst 2025-2026. Energy storage underappreciated. Sized small for Elon risk.',
-    rationale: '3% — conviction play on Robotaxi launch. Small enough that sentiment swings don\'t crater portfolio.',
-    thesis: `Tesla's investment thesis has evolved beyond EVs. The Robotaxi launch is the near-term catalyst — if FSD achieves sufficient autonomy for commercial deployment, the economics of the robotaxi network are extraordinary. Each vehicle becomes a revenue-generating asset rather than a depreciating one.
 
-The energy storage business — Megapack and Powerwall — is growing rapidly and largely ignored by analysts focused on automotive margins. As grid-scale battery storage becomes essential infrastructure for renewable energy, this business could rival automotive in scale.
-
-Optimus robot is a 3-5 year optionality play. Sized at 3% because Elon sentiment risk is real and ongoing — the stock moves 20% on a single tweet. Enough to benefit meaningfully if Robotaxi delivers, not enough to matter if it doesn't.`,
-  },
   {
     ticker: 'MP',    name: 'MP Materials',    color: '#a8ff78', annualReturn: 0.18,  risk: 4, pct: 5,
     sector: 'Rare Earth',
@@ -166,7 +141,7 @@ export const WEEKS = [
       { day: 'MON', stocks: ['VOO', 'CRWD'],   note: 'Index anchor + non-discretionary security' },
       { day: 'TUE', stocks: ['AXON', 'MELI'],  note: 'Govt contracts + LatAm growth' },
       { day: 'WED', stocks: ['MSFT', 'META'],  note: 'Quality AI compounders' },
-      { day: 'THU', stocks: ['TSLA', 'MP'],    note: 'Autonomy bet + rare earth play' },
+      { day: 'THU', stocks: ['AVGO', 'MP'],    note: 'Autonomy bet + rare earth play' },
       { day: 'FRI', stocks: ['NVDA', 'APLD'],  note: 'AI infra close — highest upside pair' },
     ],
   },
@@ -178,7 +153,7 @@ export const WEEKS = [
       { day: 'TUE', stocks: ['APLD', 'CRWD'],  note: 'AI infra + security — both high conviction' },
       { day: 'WED', stocks: ['MSFT', 'AXON'],  note: 'Durable compounder + govt safety' },
       { day: 'THU', stocks: ['META', 'MELI'],  note: 'Ad monopoly + LatAm e-commerce' },
-      { day: 'FRI', stocks: ['TSLA', 'MP'],    note: 'Autonomy + rare earth close' },
+      { day: 'FRI', stocks: ['AVGO', 'MP'],    note: 'Autonomy + rare earth close' },
     ],
   },
   {
@@ -186,7 +161,7 @@ export const WEEKS = [
     note: 'Even distribution — review drift and trim if needed',
     days: [
       { day: 'MON', stocks: ['VOO', 'NVDA'],   note: 'Consistent anchor — never skip NVDA' },
-      { day: 'TUE', stocks: ['TSLA', 'MP'],    note: 'Smaller positions — keep them funded' },
+      { day: 'TUE', stocks: ['AVGO', 'MP'],    note: 'Smaller positions — keep them funded' },
       { day: 'WED', stocks: ['CRWD', 'AXON'],  note: 'Security + govt — recession resistant pair' },
       { day: 'THU', stocks: ['MELI', 'META'],  note: 'Growth pair — LatAm + global ads' },
       { day: 'FRI', stocks: ['APLD', 'MSFT'],  note: 'High upside + quality close' },
